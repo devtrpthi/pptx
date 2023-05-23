@@ -3,15 +3,15 @@ from pptx import Presentation
 from pptx.util import Inches
 from pptx.enum.text import MSO_ANCHOR, MSO_AUTO_SIZE
 
-# Read content from sample_slide1_input.txt
+# Read content from txt files provided 
 with open('sample_slide1_input.txt', 'r') as f:
     slide1_content = f.read()
 
-# Read content from sample_slide2_input.txt
+
 with open('sample_slide2_input.txt', 'r') as f:
     slide2_content = f.read()
 
-# Create a presentation object
+
 presentation = Presentation()
 
 # Create Slide 1
@@ -33,7 +33,7 @@ slide2_content_box = slide2.shapes.add_textbox(Inches(1), Inches(1), Inches(8), 
 slide2_text_frame = slide2_content_box.text_frame
 slide2_text_frame.text = slide2_content
 
-# Set font for all slides using the given sample_font_file.ttf
+# using the given font file to set the fonts
 font_file = 'sample_font_file.ttf'
 for slide in presentation.slides:
     for shape in slide.shapes:
@@ -43,6 +43,6 @@ for slide in presentation.slides:
                     run.font.file = font_file
                     run.font.name = "Sample Font"
                     #run.font.size = Pt(4)
-# Save the presentation
+
 presentation.save("output.pptx")
 
